@@ -1,4 +1,15 @@
 .box {
   display: flex;
   padding: 10px;
+  margin: 0 auto;
+  width: 60%;
+  background: #badee3;
+}
+.col-3 {
+  padding: 20px;
+  border-right: 1px solid #305a60;
+  width: 33%;
+}
+.col-3.last {
+  border-right: none;
 }
