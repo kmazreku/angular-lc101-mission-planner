@@ -1,25 +1,37 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from "@angular/core";
 
-import { CrewComponent } from './crew.component';
+@Component({
+  selector: "app-crew",
+  templateUrl: "./crew.component.html",
+  styleUrls: ["./crew.component.css"],
+})
+export class CrewComponent implements OnInit {
+  crew: object[] = [
+    { name: "Eileen Collins", firstMission: false },
+    { name: "Mae Jemison", firstMission: false },
+    { name: "Ellen Ochoa", firstMission: true },
+  ];
+  memberBeingEdited: object = null;
 
-describe('CrewComponent', () => {
-  let component: CrewComponent;
-  let fixture: ComponentFixture<CrewComponent>;
+  constructor() {}
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CrewComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CrewComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit() {}
+  add(memberName: string, isFirst: boolean) {
+    for (let i = 0; i < this.crew.length; i++) {
+      if (this.crew[i][name] !== memberName) {
+        this.crew.push({ name: memberName, firstMission: isFirst });
+      }
+    }
+  }
+  remove(member: object) {
+    let index = this.crew.indexOf(member);
+    this.crew.splice(index, 1);
+  }
+  edit(member: object) {
+    this.memberBeingEdited = member;
+  }
+  save(name: string, member: object) {
+    member["name"] = name;
+    this.memberBeingEdited = null;
+  }
+}
