@@ -1,7 +1,9 @@
 <h3>Equipment</h3>
 <ul>
-  <li>Habitat dome</li>
-  <li>Drones</li>
-  <li>Food containers</li>
-  <li>Oxygen tanks</li>
+  <li *ngFor="let items of equipment">{{ items }}</li>
 </ul>
+<label
+  >Equipment:
+  <input #newTools type="text" />
+</label>
+<button (click)="addEquipment(newTools.value)">Add</button>
