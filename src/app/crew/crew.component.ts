@@ -1,21 +1,62 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-crew',
-  templateUrl: './crew.component.html',
-  styleUrls: ['./crew.component.css']
+  selector: "app-crew",
+  templateUrl: "./crew.component.html",
+  styleUrls: ["./crew.component.css"],
 })
 export class CrewComponent implements OnInit {
+  mousey: boolean = false;
+  inCrew: boolean = false;
+  crew: object[] = [];
 
-  crew: object[] = [
-    {name: "Eileen Collins", firstMission: false},
-    {name: "Mae Jemison", firstMission: false},
-    {name: "Ellen Ochoa", firstMission: true}
+  candidates: object[] = [
+    {
+      name: "Sally Ride",
+      photo:
+        "https://handlers.education.launchcode.org/static/images/sally-ride.jpg",
+    },
+    {
+      name: "Mae Jemison",
+      photo:
+        "https://handlers.education.launchcode.org/static/images/mae-jemison.jpg",
+    },
+    {
+      name: "Ellen Ochoa",
+      photo:
+        "https://handlers.education.launchcode.org/static/images/ellen-ochoa.jpg",
+    },
+    {
+      name: "Frederick Gregory",
+      photo:
+        "https://handlers.education.launchcode.org/static/images/frederick-gregory.jpg",
+    },
+    {
+      name: "Guion Bluford",
+      photo:
+        "https://handlers.education.launchcode.org/static/images/guion-bluford.jpg",
+    },
+    {
+      name: "Kjell Lindgren",
+      photo:
+        "https://handlers.education.launchcode.org/static/images/kjell-lindgren.jpg",
+    },
+    {
+      name: "Jeanette Epps",
+      photo:
+        "https://handlers.education.launchcode.org/static/images/jeanette-epps.jpg",
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  addCrewMember(candidate: { name; photo }): void {
+    if (!this.crew.includes(candidate) && this.crew.length < 3) {
+      this.crew.push(candidate);
+    } else if (this.crew.includes(candidate)) {
+      this.crew.splice(this.crew.indexOf(candidate), 1);
+    }
   }
-
 }
